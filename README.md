@@ -116,15 +116,15 @@ Eg: In each api we need to define 'schema'. This is repitation of the code work.
                 $ref: '#/components/schemas/sentinel_schema'
                 
                 
-components:
-  schemas:
-    sentinel_schema:
-      type: Object
-      properties:
-         prequelId:
-           type: object
-           example: 12
-         name: 
-           type: string
-           example: Lemon Water
+    components:
+      schemas:
+        sentinel_schema:
+          type: Object
+          properties:
+             prequelId:
+               type: object
+               example: 12
+             name: 
+               type: string
+               example: Lemon Water
             
