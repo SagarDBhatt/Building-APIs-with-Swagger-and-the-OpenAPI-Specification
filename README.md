@@ -15,26 +15,26 @@ info :
   version: 1.0.0
   
 ## paths to specify the resources. This shows exact functionality of our API: 
-    -> we are follwing yaml specification of writing / documenting. Thus, we need 2 spaces before ' get: '
+-> we are follwing yaml specification of writing / documenting. Thus, we need 2 spaces before ' get: '
 
-paths:
-  /getAllSentinelData:
-    get: 
-      responses:
-        200: 
-         description: Get all the sentinel data. 
-         content:
-           application/json: 
-              schema: 
-                type: array
-                items: 
-                  properties: 
-                    id:
-                      type: integer
-                      example: 400
-                    name:
-                      type: string
-                      example: sample string
+    paths:
+      /getAllSentinelData:
+        get: 
+          responses:
+            200: 
+             description: Get all the sentinel data. 
+             content:
+               application/json: 
+                  schema: 
+                    type: array
+                    items: 
+                      properties: 
+                        id:
+                          type: integer
+                          example: 400
+                        name:
+                          type: string
+                          example: sample string
 
 ## Group bunch of APIs within the same group: 
 
@@ -59,6 +59,8 @@ paths:
 
 -> in : query :: defines the datatype of the parameter.In our case, it is query parameter. Eg: http://localhost:5000/getSentinelById?id=10
 
+### Imp: Any paramaeter started with '-' symbol represnets array. For eg:  parameters: -  in : query
+
 paths:
   /getAllSentinelData:
     get:   
@@ -72,18 +74,17 @@ paths:
               
 ## Documenting path parameter in Open API Specs:  http://localhost:5000/getSentinelById/10
 
-
-paths:
-  /getSentinelDataById/{prequelD}
-    get:
-      parameters:
-        - in : path
-          name: PrequelId
-          description: Prequel Id from Sentinel Data
-          required: true
-          schema:
-            type: integer
-            exapple: 1234
+    paths:
+      /getSentinelDataById/{prequelD}
+        get:
+          parameters:
+            - in : path
+              name: PrequelId
+              description: Prequel Id from Sentinel Data
+              required: true
+              schema:
+                type: integer
+                exapple: 1234
             
       responses:
         200: 
@@ -128,3 +129,11 @@ Eg: In each api we need to define 'schema'. This is repitation of the code work.
                type: string
                example: Lemon Water
             
+            
+## Another component that can be added is responses: 
+-> Some error code are common to provide in a response list. Those error can be defined in the component and reuse in the documentation. 
+
+    Components:
+      responses:
+        500ErrorAPI:
+          description: Unexpected error
